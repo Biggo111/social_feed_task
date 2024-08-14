@@ -12,7 +12,6 @@ class MockInterceptor extends Interceptor {
     if (isAuthRequest) {
       mockFilePath = 'assets/json/user/login.json';
     } else if (isFeedRequest) {
-      // Simulate access token validation
       final token = options.headers['Authorization']?.toString().replaceFirst('Bearer ', '');
       if (token != 'mock_access_token') {
         handler.reject(DioException(
@@ -29,12 +28,23 @@ class MockInterceptor extends Interceptor {
     }
 
     if (mockFilePath.isNotEmpty) {
-      final mockData = await rootBundle.loadString(mockFilePath);
-      handler.resolve(Response(
-        requestOptions: options,
-        statusCode: 200,
-        data: json.decode(mockData),
-      ));
+      try {
+        final mockData = await rootBundle.loadString(mockFilePath);
+        handler.resolve(Response(
+          requestOptions: options,
+          statusCode: 200,
+          data: json.decode(mockData),
+        ));
+      } catch (e) {
+        handler.reject(DioException(
+          requestOptions: options,
+          response: Response(
+            requestOptions: options,
+            statusCode: 500,
+            statusMessage: 'Internal Server Error',
+          ),
+        ));
+      }
     } else {
       super.onRequest(options, handler);
     }

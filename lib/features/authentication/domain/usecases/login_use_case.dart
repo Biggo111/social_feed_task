@@ -1,12 +1,13 @@
-import 'package:social_feed_task/features/authentication/domain/entities/user.dart';
+import 'package:social_feed_task/features/authentication/data/repositories/auth_repository_impl.dart';
 import 'package:social_feed_task/features/authentication/domain/repositories/auth_repository.dart';
+import 'package:social_feed_task/services/di/service_locator_di.dart';
 
 class LoginUseCase {
   final AuthRepository repository;
 
-  LoginUseCase(this.repository);
+  LoginUseCase() : repository = sl.get<AuthRepositoryImpl>();
 
-  Future<User> execute(String email, String password) async {
-    return await repository.login(email, password);
+  Future<Object> loginUser(String email, String password) async {
+    return await repository.login(email: email, password: password);
   }
 }

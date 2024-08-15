@@ -18,5 +18,5 @@ final authRepositoryProvider = Provider<AuthRepository>(
 );
 
 final loginUseCaseProvider = Provider<LoginUseCase>(
-  (ref) => LoginUseCase(ref.read(authRepositoryProvider)),
+  (ref) => LoginUseCase(),
 );

@@ -2,8 +2,7 @@
     "users": [
       {
         "email": "user@example.com",
-        "password": "password123",
-        "token": "mock_access_token"
+        "password": "password123"
       }
     ]
   }

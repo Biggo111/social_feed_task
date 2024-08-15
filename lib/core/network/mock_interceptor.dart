@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MockInterceptor extends Interceptor {
   @override
@@ -9,10 +10,18 @@ class MockInterceptor extends Interceptor {
     final isAuthRequest = options.path.contains('/user/login');
     final isFeedRequest = options.path.contains('/feed');
     
+    // Attach token if available
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('auth_token');
+    
+    if (token != null && !isAuthRequest) {
+      options.headers['Authorization'] = 'Bearer $token';
+    }
+
     if (isAuthRequest) {
       mockFilePath = 'assets/json/user/login.json';
     } else if (isFeedRequest) {
-      final token = options.headers['Authorization']?.toString().replaceFirst('Bearer ', '');
+      // Validate token (mock)
       if (token != 'mock_access_token') {
         handler.reject(DioException(
           requestOptions: options,
@@ -28,23 +37,12 @@ class MockInterceptor extends Interceptor {
     }
 
     if (mockFilePath.isNotEmpty) {
-      try {
-        final mockData = await rootBundle.loadString(mockFilePath);
-        handler.resolve(Response(
-          requestOptions: options,
-          statusCode: 200,
-          data: json.decode(mockData),
-        ));
-      } catch (e) {
-        handler.reject(DioException(
-          requestOptions: options,
-          response: Response(
-            requestOptions: options,
-            statusCode: 500,
-            statusMessage: 'Internal Server Error',
-          ),
-        ));
-      }
+      final mockData = await rootBundle.loadString(mockFilePath);
+      handler.resolve(Response(
+        requestOptions: options,
+        statusCode: 200,
+        data: json.decode(mockData),
+      ));
     } else {
       super.onRequest(options, handler);
     }

@@ -1,5 +1,7 @@
-import 'package:social_feed_task/features/authentication/domain/entities/user.dart';
-
 abstract class AuthRepository {
-  Future<User> login(String email, String password);
+  Future<Object> login({String email, String password});
 }
+
+// abstract class AuthRepository {
+//   Future<Either<Failure, String>> login(String email, String password);
+// }

@@ -10,7 +10,7 @@ class MockInterceptor extends Interceptor {
     final isAuthRequest = options.path.contains('/user/login');
     final isFeedRequest = options.path.contains('/feed');
     
-    // Attach token if available
+    // Attach token if available (for non-auth requests)
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('auth_token');
     
@@ -18,10 +18,11 @@ class MockInterceptor extends Interceptor {
       options.headers['Authorization'] = 'Bearer $token';
     }
 
+    // Mock data paths
     if (isAuthRequest) {
       mockFilePath = 'assets/json/user/login.json';
     } else if (isFeedRequest) {
-      // Validate token (mock)
+      // Validate token
       if (token != 'mock_access_token') {
         handler.reject(DioException(
           requestOptions: options,
@@ -36,6 +37,7 @@ class MockInterceptor extends Interceptor {
       mockFilePath = 'assets/json/feed/posts.json';
     }
 
+    // Load mock data and respond
     if (mockFilePath.isNotEmpty) {
       final mockData = await rootBundle.loadString(mockFilePath);
       handler.resolve(Response(
@@ -46,5 +48,18 @@ class MockInterceptor extends Interceptor {
     } else {
       super.onRequest(options, handler);
     }
+  }
+
+  @override
+  Future<void> onResponse(Response response, ResponseInterceptorHandler handler) async {
+    // Handle login response: save the token if it's a login request
+    if (response.requestOptions.path.contains('/user/login')) {
+      final token = response.data['token'];
+      if (token != null) {
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('auth_token', token);
+      }
+    }
+    handler.next(response);
   }
 }

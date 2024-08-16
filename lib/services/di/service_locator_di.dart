@@ -5,8 +5,8 @@ import 'package:social_feed_task/core/network/mock_interceptor.dart';
 import 'package:social_feed_task/core/network/network_info.dart';
 import 'package:social_feed_task/features/authentication/data/datasources/auth_remote_data_source.dart';
 import 'package:social_feed_task/features/authentication/data/repositories/auth_repository_impl.dart';
-import 'package:social_feed_task/features/authentication/domain/repositories/auth_repository.dart';
 import 'package:social_feed_task/features/authentication/domain/usecases/login_use_case.dart';
+
 
 final sl = GetIt.instance;
 
@@ -23,8 +23,8 @@ Future<void> init() async {
   sl.registerLazySingleton<AuthRemoteDataSource>(() => AuthRemoteDataSourceImpl(sl()));
 
   // Repositories
-  sl.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(sl()));
+  sl.registerLazySingleton<AuthRepositoryImpl>(() => AuthRepositoryImpl(sl()));
 
-  // // Use cases
-  // sl.registerLazySingleton(() => LoginUseCase(sl()));
+  // Use cases
+  sl.registerLazySingleton(() => LoginUseCase());
 }

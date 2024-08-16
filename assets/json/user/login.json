@@ -1,0 +1,23 @@
+{
+    "users": [
+      {
+        "user_id": 1,
+        "username": "john_doe",
+        "email": "john@example.com",
+        "password": "password123",
+        "name": "John Doe",
+        "bio": "Tech enthusiast. Love to code.",
+        "profile_picture": "https://example.com/profile/john_doe.jpg"
+      },
+      {
+        "user_id": 2,
+        "username": "jane_smith",
+        "email": "jane@example.com",
+        "password": "mypassword",
+        "name": "Jane Smith",
+        "bio": "Travel blogger. Coffee lover.",
+        "profile_picture": "https://example.com/profile/jane_smith.jpg"
+      }
+    ]
+  }
+  

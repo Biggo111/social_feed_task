@@ -1,6 +1,7 @@
 import 'package:social_feed_task/features/authentication/data/datasources/auth_remote_data_source.dart';
 import 'package:social_feed_task/features/authentication/domain/entities/user.dart';
 import 'package:social_feed_task/features/authentication/domain/repositories/auth_repository.dart';
+import 'package:social_feed_task/services/debugger/debugger.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource;
@@ -9,6 +10,8 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Object> login({String? email, String? password}) async {
+
+    debug(data: "Login Repository: $email, $password");
     // Attempt to login using the remote data source
     final token = await remoteDataSource.login(email!, password!);
 

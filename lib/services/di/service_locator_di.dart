@@ -6,11 +6,15 @@ import 'package:social_feed_task/core/network/network_info.dart';
 import 'package:social_feed_task/features/authentication/data/datasources/auth_remote_data_source.dart';
 import 'package:social_feed_task/features/authentication/data/repositories/auth_repository_impl.dart';
 import 'package:social_feed_task/features/authentication/domain/usecases/login_use_case.dart';
+import 'package:social_feed_task/services/navigation_service/navigator.dart';
 
 
 final sl = GetIt.instance;
 
 Future<void> init() async {
+
+  sl.registerLazySingleton<NavigationService>(()=> NavigationService());
+
   // External dependencies
   sl.registerLazySingleton<Dio>(() => Dio()..interceptors.add(MockInterceptor()));
 

@@ -3,12 +3,12 @@ import 'package:social_feed_task/features/authentication/domain/entities/user.da
 class AuthGeneric{
   final User? user;
   final bool isLoading;
-  final bool? error;
+  final bool error;
 
   AuthGeneric({
     this.user,
     this.isLoading = false,
-    this.error,
+    this.error = false,
   });
 
   AuthGeneric update({User? user, bool? error, bool? isLoading}){

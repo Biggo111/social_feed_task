@@ -13,11 +13,11 @@ class ApiClient {
     _accessToken = token;
   }
 
-  Future<Response> get(String path) async {
-    final options = Options(
-      headers: _accessToken != null ? {'Authorization': 'Bearer $_accessToken'} : {},
-    );
-    return _dio.get(path, options: options);
-  }
+  // Future<Response> get(String path) async {
+  //   final options = Options(
+  //     headers: _accessToken != null ? {'Authorization': 'Bearer $_accessToken'} : {},
+  //   );
+  //   return _dio.get(path, options: options);
+  // }
 
 }

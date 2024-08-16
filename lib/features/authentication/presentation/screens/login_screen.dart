@@ -39,6 +39,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
           ElevatedButton(
             onPressed: () async{
               ref.read(authControllerProvider.notifier).login(emailController.text, passwordController.text);
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const FeedScreen()));
             },
             child: const Text('Login'),
           ),

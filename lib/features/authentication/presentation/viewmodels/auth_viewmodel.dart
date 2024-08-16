@@ -25,7 +25,7 @@ class AuthController extends StateNotifier<AuthGeneric>{
       if(userResponse is User){
         debug(data: "User Response: ${userResponse.name}");
         state = state.update(isLoading: false, user: userResponse, error: false);
-        handleNavigation();
+        // handleNavigation();
       } else{
         state = state.update(isLoading: false, error: true);
       }

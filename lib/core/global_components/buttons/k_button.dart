@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_feed_task/core/constants/colors_palette.dart';
 import 'package:social_feed_task/services/responsive_services/responsive_service.dart';
 
 class KButton extends StatelessWidget {
@@ -38,6 +39,7 @@ class KButton extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
+          shadowColor: AppColors.black54,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius),
             side: BorderSide(color: borderColor, width: borderWidth),
@@ -49,8 +51,11 @@ class KButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   icon!,
-                  const SizedBox(width: 5),
-                  Text(text, style: textStyle),
+                  const SizedBox(width: 10),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 2),
+                    child: Text(text, style: textStyle),
+                  ),
                 ],
               )
             : Text(text, style: textStyle),

@@ -29,137 +29,191 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Image.asset(AssetPath.meetmaxLogo,
-                          width: 16, fit: BoxFit.contain),
-                      const SizedBox(width: 5),
-                      const Text("MeetMax", style: AppFonts.bodyRegular12),
-                    ],
-                  ),
-                  KDropdownButton(
-                      value: selectedValue,
-                      items: const [
-                        DropdownMenuItem(
-                            value: 'English', child: Text('Option 1', style: AppFonts.bodyRegular)),
-                        DropdownMenuItem(
-                            value: 'Bangla', child: Text('Option 2', style: AppFonts.bodyRegular)),
-                        DropdownMenuItem(
-                            value: 'German', child: Text('Option 3', style: AppFonts.bodyRegular)),
-                      ],
-                      onChanged: (value) {
-                        setState(() {
-                          selectedValue = value!;
-                        });
-                      },
-                      width: 200.0,
-                      height: 25.0,
-                      backgroundColor: Colors.white,
-                      textStyle: AppFonts.bodyRegular,
-                      borderColor: AppColors.white,
-                      hint: selectedValue,
-                  )
-                ],
-              ),
-              const Text("Sign In", style: AppFonts.heading3Bold),
-              const SizedBox(height: 10),
-              const Text("Welcome back, you've been missed!", style: AppFonts.bodyRegular),
-              const SizedBox(height: 20),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                decoration: BoxDecoration(
-                  color: AppColors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.black.withOpacity(0.1),
-                      blurRadius: 5,
-                      offset: const Offset(0, 2),
-                    )
-                  ],
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Column(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        KButton(
-                          text: 'Log in with Google', 
-                          onPressed: (){},
-                          width: 300,
-                          height: 40,
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          icon: Image.asset(AssetPath.googleIcon, width: 16, fit: BoxFit.contain),
-                          textStyle: AppFonts.bodyRegular.copyWith(color: AppColors.black, fontSize: 12, fontWeight: FontWeight.w500),
-                          backgroundColor: AppColors.white54,
-                        ),
-                        KButton(
-                          text: 'Log in with Apple', 
-                          onPressed: (){},
-                          width: 300,
-                          height: 40,
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          icon: Image.asset(AssetPath.appleIcon, width: 16, fit: BoxFit.contain),
-                          textStyle: AppFonts.bodyRegular.copyWith(color: AppColors.black, fontSize: 12, fontWeight: FontWeight.w500),
-                          backgroundColor: AppColors.white54,
-                        )
+                        Image.asset(AssetPath.meetmaxLogo,
+                             fit: BoxFit.contain),
+                        const SizedBox(width: 5),
+                        Text("MeetMax", style: AppFonts.bodyRegular12.copyWith(color: AppColors.black, fontWeight: FontWeight.w800, fontSize: 16)),
                       ],
                     ),
-                    const SizedBox(height: 10),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Divider(
-                            color: AppColors.grey,
-                            thickness: 0.5,
-                            indent: 12,
-                            endIndent: 5,
-                          ),
-                        ),
-                        const Text("OR", style: AppFonts.bodyBold),
-                        Expanded(
-                          child: Divider(
-                            color: AppColors.grey,
-                            thickness: 0.5,
-                            indent: 5,
-                            endIndent: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    KTextField(
-                      width: 650,
-                      height: 40,
-                      hintText: 'Your Email',
-                      controller: emailController,
-                      keyboardType: TextInputType.emailAddress,
-                      textStyle: AppFonts.bodyBold,
-                      icon: Image.asset(AssetPath.mailIcon, width: 16, fit: BoxFit.contain),
-                    ),
-                    const SizedBox(height: 20),
-                    KTextField(
-                      width: 650,
-                      height: 40,
-                      hintText: 'Your Password',
-                      controller: passwordController,
-                      keyboardType: TextInputType.emailAddress,
-                      textStyle: AppFonts.bodyBold,
-                      icon: Image.asset(AssetPath.lockIcon, width: 16, fit: BoxFit.contain),
-                      showPassword: true,
-                      obscureText: authState.passwordVisible,
-                      onTogglePasswordVisibility: authController.togglePasswordVisibility,
-                    ),
+                    KDropdownButton(
+                        value: selectedValue,
+                        items: [
+                          DropdownMenuItem(
+                              value: 'English', child: Text('Option 1', style: AppFonts.bodyRegular)),
+                          DropdownMenuItem(
+                              value: 'Bangla', child: Text('Option 2', style: AppFonts.bodyRegular)),
+                          DropdownMenuItem(
+                              value: 'German', child: Text('Option 3', style: AppFonts.bodyRegular)),
+                        ],
+                        onChanged: (value) {
+                          setState(() {
+                            selectedValue = value!;
+                          });
+                        },
+                        width: 200.0,
+                        height: 25.0,
+                        backgroundColor: Colors.white,
+                        textStyle: AppFonts.bodyRegular,
+                        borderColor: AppColors.white,
+                        hint: selectedValue,
+                    )
                   ],
                 ),
-              )
-            ],
+                const SizedBox(height: 50),
+                Text("Sign In", style: AppFonts.heading3Bold),
+                const SizedBox(height: 10),
+                Text("Welcome back, you've been missed!", style: AppFonts.bodyBold.copyWith(color: AppColors.black54, fontSize: 16)),
+                const SizedBox(height: 50),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  decoration: BoxDecoration(
+                    color: AppColors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.black.withOpacity(0.1),
+                        blurRadius: 5,
+                        offset: const Offset(0, 2),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          KButton(
+                            text: 'Log in with Google', 
+                            onPressed: (){},
+                            width: 300,
+                            height: 40,
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            icon: Image.asset(AssetPath.googleIcon, width: 16, fit: BoxFit.contain),
+                            textStyle: AppFonts.bodyBold.copyWith(color: AppColors.black54, fontSize: 12, fontWeight: FontWeight.bold),
+                            backgroundColor: AppColors.white70,
+                          ),
+                          KButton(
+                            text: 'Log in with Apple', 
+                            onPressed: (){},
+                            width: 300,
+                            height: 40,
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            icon: Image.asset(AssetPath.appleIcon, width: 16, fit: BoxFit.contain),
+                            textStyle: AppFonts.bodyBold.copyWith(color: AppColors.black54, fontSize: 12, fontWeight: FontWeight.bold),
+                            backgroundColor: AppColors.white70,
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Divider(
+                              color: AppColors.grey,
+                              thickness: 0.5,
+                              indent: 12,
+                              endIndent: 5,
+                            ),
+                          ),
+                          Text("OR", style: AppFonts.bodyBold),
+                          Expanded(
+                            child: Divider(
+                              color: AppColors.grey,
+                              thickness: 0.5,
+                              indent: 5,
+                              endIndent: 12,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      KTextField(
+                        width: 650,
+                        height: 40,
+                        hintText: 'Your Email',
+                        controller: emailController,
+                        keyboardType: TextInputType.emailAddress,
+                        borderColor: AppColors.black26,
+                        textStyle: AppFonts.bodyBold,
+                        icon: Image.asset(AssetPath.mailIcon, width: 16, fit: BoxFit.contain),
+                      ),
+                      const SizedBox(height: 20),
+                      KTextField(
+                        width: 650,
+                        height: 40,
+                        hintText: 'Your Password',
+                        controller: passwordController,
+                        keyboardType: TextInputType.emailAddress,
+                        textStyle: AppFonts.bodyBold,
+                        borderColor: AppColors.black26,
+                        icon: Image.asset(AssetPath.lockIcon, width: 16, fit: BoxFit.contain),
+                        showPassword: true,
+                        obscureText: authState.passwordVisible,
+                        onTogglePasswordVisibility: authController.togglePasswordVisibility,
+                      ),
+                      const SizedBox(height: 15),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Row(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                const Icon(
+                                  Icons.check_box_outline_blank,
+                                  color: AppColors.black54,
+                                  size: 16,
+                                ),
+                                const SizedBox(width: 5),
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 2),
+                                  child: Text("Remember me", style: AppFonts.bodyMedium.copyWith(fontSize: 16, fontWeight: FontWeight.w800, color: AppColors.black54)),
+                                ),
+                              ],
+                            ),
+                            const Spacer(),
+                            Text("Forgot Password?", style: AppFonts.bodyMedium.copyWith(fontSize: 16, fontWeight: FontWeight.w800, color: AppColors.black54)),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      KButton(
+                        text: 'Log In',
+                        onPressed: (){
+                          authController.login(emailController.text.trim(), passwordController.text.trim());
+                        },
+                        height: 40,
+                        backgroundColor: AppColors.blue,
+                        textStyle: AppFonts.bodyRegular.copyWith(color: AppColors.white, fontSize: 16),
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("You haven't any account?", style: AppFonts.bodyMedium),
+                          TextButton(
+                            onPressed: (){},
+                            child: Text("Sign Up", style: AppFonts.bodyMedium.copyWith(color: AppColors.blue, fontWeight: FontWeight.w800)),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:social_feed_task/core/network/api_client.dart';
 import 'package:social_feed_task/core/network/mock_interceptor.dart';

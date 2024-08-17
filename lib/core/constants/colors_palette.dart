@@ -15,6 +15,11 @@ class AppColors {
 
   // black
   static const Color black = Color(0xFF000000);
+  static const  black87 = Colors.black87;
+  static const  black38 = Colors.black38;
+  static const  black26 = Colors.black26;
+  static const  black45 = Colors.black45;
+  static const  black54 = Colors.black54;
 
   // white
   static const Color white = Color(0xFFFFFFFF);
@@ -22,6 +27,7 @@ class AppColors {
   static const white70 = Colors.white70;
   static const titanWhite = Color(0xFFFCFCFF);
   static const whiteLilac = Color(0xFFEDEFF9);
+  static const whiteColorForButtonBackground = Color.fromRGBO(78, 93, 120, 0.05);
 
   //Grey
   static Color grey = Colors.grey;

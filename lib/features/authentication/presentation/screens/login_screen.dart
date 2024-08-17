@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:social_feed_task/core/constants/asset_path.dart';
@@ -6,6 +7,7 @@ import 'package:social_feed_task/core/global_components/buttons/k_button.dart';
 import 'package:social_feed_task/core/global_components/buttons/k_drop_down_button.dart';
 import 'package:social_feed_task/core/global_components/text_fields/k_text_field.dart';
 import 'package:social_feed_task/core/global_components/text_styles/app_fons.dart';
+import 'package:social_feed_task/features/authentication/presentation/screens/signup_screen.dart';
 import 'package:social_feed_task/features/authentication/presentation/viewmodels/auth_viewmodel.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
@@ -80,7 +82,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     color: AppColors.white,
                     boxShadow: [
                       BoxShadow(
-                        color: AppColors.black.withOpacity(0.1),
+                        color: AppColors.grey.withOpacity(0.1),
                         blurRadius: 5,
                         offset: const Offset(0, 2),
                       )
@@ -204,7 +206,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         children: [
                           Text("You haven't any account?", style: AppFonts.bodyMedium),
                           TextButton(
-                            onPressed: (){},
+                            onPressed: (){
+                              Navigator.push(context, CupertinoPageRoute(builder: (context) => const SignUpScreen()));
+                            },
                             child: Text("Sign Up", style: AppFonts.bodyMedium.copyWith(color: AppColors.blue, fontWeight: FontWeight.w800)),
                           ),
                         ],

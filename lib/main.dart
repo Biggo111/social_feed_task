@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:social_feed_task/core/constants/colors_palette.dart';
 import 'package:social_feed_task/features/authentication/presentation/screens/login_screen.dart';
 import 'package:social_feed_task/services/di/service_locator_di.dart';
 
@@ -15,10 +16,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Social Feed Task',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primaryColor: AppColors.white,
+        useMaterial3: false,
       ),
       home: const LoginScreen()
     );

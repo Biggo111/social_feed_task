@@ -1,5 +1,3 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:social_feed_task/features/authentication/domain/entities/user.dart';
@@ -42,4 +40,9 @@ class AuthController extends StateNotifier<AuthGeneric>{
       debug(data: "Login Failed");
     }
   }
+
+  void togglePasswordVisibility() {
+    state = state.update(passwordVisible: !state.passwordVisible);
+  }
+
 }

@@ -10,10 +10,18 @@ class PostImageGrid extends StatelessWidget {
     return Container(
       height: 270,
       margin: const EdgeInsets.symmetric(horizontal: 16),
-      child: imagePaths.length == 1
-          ? _buildSingleImage()
-          : _buildMultipleImages(),
+      child: _buildImageGrid(),
     );
+  }
+
+  Widget _buildImageGrid() {
+    if (imagePaths.length == 1) {
+      return _buildSingleImage();
+    } else if (imagePaths.length == 2) {
+      return _buildTwoImages();
+    } else {
+      return _buildMultipleImages();
+    }
   }
 
   Widget _buildSingleImage() {
@@ -25,6 +33,40 @@ class PostImageGrid extends StatelessWidget {
         height: double.infinity,
         fit: BoxFit.cover,
       ),
+    );
+  }
+
+  Widget _buildTwoImages() {
+    return Row(
+      children: [
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.asset(
+                imagePaths[0],
+                fit: BoxFit.cover,
+                height: double.infinity,
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(width: 4),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.asset(
+                imagePaths[1],
+                fit: BoxFit.cover,
+                height: double.infinity,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_feed_task/core/network/api_client.dart';
 import 'package:social_feed_task/core/network/mock_interceptor.dart';
 import 'package:social_feed_task/core/network/network_info.dart';
@@ -14,6 +14,13 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
 
+  // Initialize SharedPreferences instance
+  final sharedPreferences = await SharedPreferences.getInstance();
+
+  // Register SharedPreferences
+  sl.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
+
+  //Register navigation service
   sl.registerLazySingleton<NavigationService>(()=> NavigationService());
 
   // External dependencies

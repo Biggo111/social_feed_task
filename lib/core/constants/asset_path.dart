@@ -1,5 +1,6 @@
 class AssetPath {
   static const String meetmaxLogo = 'assets/images/logos/meetmax_logo.png';
+  static const String meetmaxLogoWithName = 'assets/images/logos/meetmax_logo_with_name.png';
 
   static const String googleIcon = 'assets/images/icons/google_icon.png';
   static const String appleIcon = 'assets/images/icons/apple_icon.png';
@@ -13,6 +14,6 @@ class AssetPath {
   static const String calendarIcon = 'assets/images/icons/calendar_icon.png';
   static const String maleIcon = 'assets/images/icons/male_icon.png';
   static const String femaleIcon = 'assets/images/icons/female_icon.png';
-  
+
   static const String dropDownIcon = 'assets/images/icons/drop_down_icon.png';
 }

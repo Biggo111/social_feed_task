@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:social_feed_task/core/constants/asset_path.dart';
 import 'package:social_feed_task/core/constants/colors_palette.dart';
@@ -8,7 +6,6 @@ import 'package:social_feed_task/core/global_components/buttons/k_button.dart';
 import 'package:social_feed_task/core/global_components/text_fields/k_text_field.dart';
 import 'package:social_feed_task/core/global_components/text_styles/app_fons.dart';
 import 'package:social_feed_task/features/authentication/presentation/components/language_dropdown_button.dart';
-import 'package:social_feed_task/features/authentication/presentation/screens/login_screen.dart';
 import 'package:social_feed_task/features/authentication/presentation/viewmodels/auth_viewmodel.dart';
 
 class SignUpScreen extends ConsumerStatefulWidget {
@@ -255,7 +252,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                               style: AppFonts.bodyMedium),
                           TextButton(
                             onPressed: () {
-                              Navigator.push(context, CupertinoPageRoute(builder: (context) => const LoginScreen()));
+                              Navigator.pop(context);
                             },
                             child: Text("Log In",
                                 style: AppFonts.bodyMedium.copyWith(

@@ -51,7 +51,7 @@ class KButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   icon!,
-                  const SizedBox(width: 10),
+                  const SizedBox(width: 8),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 2),
                     child: Text(text, style: textStyle),

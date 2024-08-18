@@ -1,13 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:social_feed_task/core/constants/asset_path.dart';
 import 'package:social_feed_task/core/constants/colors_palette.dart';
 import 'package:social_feed_task/core/global_components/buttons/k_button.dart';
-import 'package:social_feed_task/core/global_components/buttons/k_drop_down_button.dart';
 import 'package:social_feed_task/core/global_components/text_fields/k_text_field.dart';
 import 'package:social_feed_task/core/global_components/text_styles/app_fons.dart';
+import 'package:social_feed_task/features/authentication/presentation/components/language_dropdown_button.dart';
 import 'package:social_feed_task/features/authentication/presentation/screens/login_screen.dart';
+import 'package:social_feed_task/features/authentication/presentation/viewmodels/auth_viewmodel.dart';
 
 class SignUpScreen extends ConsumerStatefulWidget {
   const SignUpScreen({super.key});
@@ -17,13 +19,17 @@ class SignUpScreen extends ConsumerStatefulWidget {
 }
 
 class _SignUpScreenState extends ConsumerState<SignUpScreen> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  String selectedValue = 'English';
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _dobController = TextEditingController();
   String? _selectedGender;
 
   @override
   Widget build(BuildContext context) {
+   final authState = ref.watch(authControllerProvider);
+   final authController = ref.read(authControllerProvider.notifier);
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -47,37 +53,10 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                                 fontSize: 16)),
                       ],
                     ),
-                    KDropdownButton(
-                      value: selectedValue,
-                      items: [
-                        DropdownMenuItem(
-                            value: 'English',
-                            child:
-                                Text('Option 1', style: AppFonts.bodyRegular)),
-                        DropdownMenuItem(
-                            value: 'Bangla',
-                            child:
-                                Text('Option 2', style: AppFonts.bodyRegular)),
-                        DropdownMenuItem(
-                            value: 'German',
-                            child:
-                                Text('Option 3', style: AppFonts.bodyRegular)),
-                      ],
-                      onChanged: (value) {
-                        setState(() {
-                          selectedValue = value!;
-                        });
-                      },
-                      width: 200.0,
-                      height: 25.0,
-                      backgroundColor: Colors.white,
-                      textStyle: AppFonts.bodyRegular,
-                      borderColor: AppColors.white,
-                      hint: selectedValue,
-                    )
+                    const LanguageDropdownButton()
                   ],
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 40),
                 Text("Getting Started", style: AppFonts.heading3Bold),
                 const SizedBox(height: 10),
                 Text(
@@ -85,7 +64,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                     textAlign: TextAlign.center,
                     style: AppFonts.bodyBold
                         .copyWith(color: AppColors.black54, fontSize: 16)),
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
                 Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -163,7 +142,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                         width: 650,
                         height: 40,
                         hintText: 'Your Email',
-                        controller: emailController,
+                        controller: _emailController,
                         keyboardType: TextInputType.emailAddress,
                         borderColor: AppColors.black26,
                         textStyle: AppFonts.bodyBold,
@@ -175,7 +154,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                         width: 650,
                         height: 40,
                         hintText: 'Your Name',
-                        controller: emailController,
+                        controller: _nameController,
                         keyboardType: TextInputType.emailAddress,
                         borderColor: AppColors.black26,
                         textStyle: AppFonts.bodyBold,
@@ -187,22 +166,22 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                         width: 650,
                         height: 40,
                         hintText: 'Create Password',
-                        controller: passwordController,
+                        controller: _passwordController,
                         keyboardType: TextInputType.emailAddress,
                         textStyle: AppFonts.bodyBold,
                         borderColor: AppColors.black26,
                         icon: Image.asset(AssetPath.lockIcon,
                             width: 16, fit: BoxFit.contain),
                         showPassword: true,
-                        // obscureText: authState.passwordVisible,
-                        // onTogglePasswordVisibility: authController.togglePasswordVisibility,
+                        obscureText: authState.passwordVisible,
+                        onTogglePasswordVisibility: authController.togglePasswordVisibility,
                       ),
                       const SizedBox(height: 15),
                       KTextField(
                         width: 650,
                         height: 40,
                         hintText: 'Date of Birth',
-                        controller: emailController,
+                        controller: _dobController,
                         keyboardType: TextInputType.emailAddress,
                         borderColor: AppColors.black26,
                         textStyle: AppFonts.bodyBold,

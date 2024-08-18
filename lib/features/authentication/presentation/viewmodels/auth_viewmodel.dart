@@ -31,7 +31,7 @@ class AuthController extends StateNotifier<AuthGeneric> with ProcessAuthMixin{
       if(userResponse is User){
         debug(data: "User Response: ${userResponse.name}");
         state = state.update(isLoading: false, user: userResponse, error: false);
-        handleNavigation();
+        handleAfterLoginNavigation();
       } else{
         state = state.update(isLoading: false, error: true);
       }
@@ -40,7 +40,7 @@ class AuthController extends StateNotifier<AuthGeneric> with ProcessAuthMixin{
     }
   }
 
-  void handleNavigation(){
+  void handleAfterLoginNavigation(){
     if(!state.error){
       debug(data: "User Logged In: ${state.user!.email}");
       NavigationService.navigatorKey.currentState!.pushReplacement(CupertinoPageRoute(builder: (context) => const FeedScreen()));
@@ -51,6 +51,10 @@ class AuthController extends StateNotifier<AuthGeneric> with ProcessAuthMixin{
 
   void togglePasswordVisibility() {
     state = state.update(passwordVisible: !state.passwordVisible);
+  }
+
+  void toggleRememberMe(){
+    state = state.update(toggleRememberMe: !state.toggleRememberMe);
   }
 
 }

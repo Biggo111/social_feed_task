@@ -13,4 +13,6 @@ class AssetPath {
   static const String calendarIcon = 'assets/images/icons/calendar_icon.png';
   static const String maleIcon = 'assets/images/icons/male_icon.png';
   static const String femaleIcon = 'assets/images/icons/female_icon.png';
+  
+  static const String dropDownIcon = 'assets/images/icons/drop_down_icon.png';
 }

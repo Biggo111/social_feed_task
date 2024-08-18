@@ -4,9 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:social_feed_task/core/constants/asset_path.dart';
 import 'package:social_feed_task/core/constants/colors_palette.dart';
 import 'package:social_feed_task/core/global_components/buttons/k_button.dart';
-import 'package:social_feed_task/core/global_components/buttons/k_drop_down_button.dart';
 import 'package:social_feed_task/core/global_components/text_fields/k_text_field.dart';
 import 'package:social_feed_task/core/global_components/text_styles/app_fons.dart';
+import 'package:social_feed_task/features/authentication/presentation/components/language_dropdown_button.dart';
 import 'package:social_feed_task/features/authentication/presentation/screens/signup_screen.dart';
 import 'package:social_feed_task/features/authentication/presentation/viewmodels/auth_viewmodel.dart';
 
@@ -18,8 +18,8 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
   String selectedValue = 'English';
 
   @override
@@ -47,28 +47,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         Text("MeetMax", style: AppFonts.bodyRegular12.copyWith(color: AppColors.black, fontWeight: FontWeight.w800, fontSize: 16)),
                       ],
                     ),
-                    KDropdownButton(
-                        value: selectedValue,
-                        items: [
-                          DropdownMenuItem(
-                              value: 'English', child: Text('Option 1', style: AppFonts.bodyRegular)),
-                          DropdownMenuItem(
-                              value: 'Bangla', child: Text('Option 2', style: AppFonts.bodyRegular)),
-                          DropdownMenuItem(
-                              value: 'German', child: Text('Option 3', style: AppFonts.bodyRegular)),
-                        ],
-                        onChanged: (value) {
-                          setState(() {
-                            selectedValue = value!;
-                          });
-                        },
-                        width: 200.0,
-                        height: 25.0,
-                        backgroundColor: Colors.white,
-                        textStyle: AppFonts.bodyRegular,
-                        borderColor: AppColors.white,
-                        hint: selectedValue,
-                    )
+                    const LanguageDropdownButton()
                   ],
                 ),
                 const SizedBox(height: 50),
@@ -144,7 +123,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         width: 650,
                         height: 40,
                         hintText: 'Your Email',
-                        controller: emailController,
+                        controller: _emailController,
                         keyboardType: TextInputType.emailAddress,
                         borderColor: AppColors.black26,
                         textStyle: AppFonts.bodyBold,
@@ -155,7 +134,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         width: 650,
                         height: 40,
                         hintText: 'Your Password',
-                        controller: passwordController,
+                        controller: _passwordController,
                         keyboardType: TextInputType.emailAddress,
                         textStyle: AppFonts.bodyBold,
                         borderColor: AppColors.black26,
@@ -172,10 +151,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                const Icon(
-                                  Icons.check_box_outline_blank,
-                                  color: AppColors.black54,
-                                  size: 16,
+                                GestureDetector(
+                                  onTap: (){
+                                    authController.toggleRememberMe();
+                                  },
+                                  child: Icon(
+                                    authState.toggleRememberMe ? Icons.check_box_outline_blank : Icons.check_box,
+                                    color: AppColors.black54,
+                                    size: 16,
+                                  ),
                                 ),
                                 const SizedBox(width: 5),
                                 Padding(
@@ -193,7 +177,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       KButton(
                         text: 'Log In',
                         onPressed: (){
-                          authController.login(emailController.text.trim(), passwordController.text.trim());
+                          authController.login(_emailController.text.trim(), _passwordController.text.trim());
                         },
                         height: 40,
                         backgroundColor: AppColors.blue,

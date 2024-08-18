@@ -7,6 +7,7 @@ import 'package:social_feed_task/core/global_components/buttons/k_button.dart';
 import 'package:social_feed_task/core/global_components/text_fields/k_text_field.dart';
 import 'package:social_feed_task/core/global_components/text_styles/app_fons.dart';
 import 'package:social_feed_task/features/authentication/presentation/components/language_dropdown_button.dart';
+import 'package:social_feed_task/features/authentication/presentation/screens/forgot_password_screen.dart';
 import 'package:social_feed_task/features/authentication/presentation/screens/signup_screen.dart';
 import 'package:social_feed_task/features/authentication/presentation/viewmodels/auth_viewmodel.dart';
 
@@ -169,7 +170,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               ],
                             ),
                             const Spacer(),
-                            Text("Forgot Password?", style: AppFonts.bodyMedium.copyWith(fontSize: 16, fontWeight: FontWeight.w800, color: AppColors.black54)),
+                            InkWell(
+                              onTap: (){
+                                Navigator.push(context, CupertinoPageRoute(builder: (context) => const ForgotPasswordScreen()));
+                              },
+                              child: Text("Forgot Password?", style: AppFonts.bodyMedium.copyWith(fontSize: 16, fontWeight: FontWeight.w800, color: AppColors.black54))),
                           ],
                         ),
                       ),

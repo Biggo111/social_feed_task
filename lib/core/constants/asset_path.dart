@@ -22,4 +22,10 @@ class AssetPath {
 
   static const String videoIcon = 'assets/images/icons/video_icon.png';
   static const String imageIcon = 'assets/images/icons/image_icon.png';
+
+  static const String optionsIcon = 'assets/images/icons/options_icon.png';
+
+  static const String likeIcon = 'assets/images/icons/like_icon.png';
+  static const String commentIcon = 'assets/images/icons/comment_icon.png';
+  static const String shareIcon = 'assets/images/icons/share_icon.png';
 }

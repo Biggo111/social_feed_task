@@ -10,6 +10,7 @@ class KTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final Color borderColor;
   final TextStyle textStyle;
+  final Color backgroundColor;
   final double width;
   final double height;
   final Widget? icon;
@@ -30,6 +31,7 @@ class KTextField extends StatelessWidget {
     this.icon,
     this.showPassword = false,
     this.onTogglePasswordVisibility,
+    this.backgroundColor = Colors.transparent,
   });
 
   @override
@@ -50,19 +52,22 @@ class KTextField extends StatelessWidget {
             child: icon,
           ) : Container(),
           Expanded(
-            child: TextFormField(
-              controller: controller,
-              keyboardType: keyboardType,
-              obscureText: obscureText,
-              validator: validator,
-              style: textStyle,
-              decoration: InputDecoration(
-                hintText: hintText,
-                hintStyle: textStyle.copyWith(color: Colors.grey),
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: ResponsiveService.scaleWidth(context, 10.0),
-                  vertical: ResponsiveService.scaleHeight(context, 11.0),
+            child: Container(
+              color: backgroundColor,
+              child: TextFormField(
+                controller: controller,
+                keyboardType: keyboardType,
+                obscureText: obscureText,
+                validator: validator,
+                style: textStyle,
+                decoration: InputDecoration(
+                  hintText: hintText,
+                  hintStyle: textStyle.copyWith(color: Colors.grey),
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: ResponsiveService.scaleWidth(context, 10.0),
+                    vertical: ResponsiveService.scaleHeight(context, 11.0),
+                  ),
                 ),
               ),
             ),

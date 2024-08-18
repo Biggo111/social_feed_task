@@ -16,4 +16,10 @@ class AssetPath {
   static const String femaleIcon = 'assets/images/icons/female_icon.png';
 
   static const String dropDownIcon = 'assets/images/icons/drop_down_icon.png';
+
+  static const String messageBoxIcon = 'assets/images/icons/message_box_icon.png';
+  static const String searchIcon = 'assets/images/icons/search_icon.png';
+
+  static const String videoIcon = 'assets/images/icons/video_icon.png';
+  static const String imageIcon = 'assets/images/icons/image_icon.png';
 }

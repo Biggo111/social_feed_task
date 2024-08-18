@@ -28,4 +28,6 @@ class AssetPath {
   static const String likeIcon = 'assets/images/icons/like_icon.png';
   static const String commentIcon = 'assets/images/icons/comment_icon.png';
   static const String shareIcon = 'assets/images/icons/share_icon.png';
+  static const String gifIcon = 'assets/images/icons/gif_icon.png';
+  static const String sendIcon = 'assets/images/icons/send_icon.png';
 }

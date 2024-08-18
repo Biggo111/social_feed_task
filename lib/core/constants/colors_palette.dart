@@ -35,5 +35,9 @@ class AppColors {
   static final grey100 = Colors.grey[100];
   // static const buttonBackground1 = Color(0x4E5D78);
 
+
+  static Color cornflowerBlue = const Color(0xFF7186EB);
+  static Color vistaBlue = const Color(0xFF8B99DF);
+  static Color lightBlue = const Color(0xFFEBF5FF);
     
 }

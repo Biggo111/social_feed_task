@@ -35,7 +35,7 @@ class ProfileSearchMessageWidget extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10.0, right: 5),
-            child: Image.asset(AssetPath.messageBoxIcon, width: 25, fit: BoxFit.contain, color: AppColors.black,),
+            child: Image.asset(AssetPath.messageBoxIcon, width: 25, fit: BoxFit.contain, color: AppColors.black87,),
           ),
         ],
       ),

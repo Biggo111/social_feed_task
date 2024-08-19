@@ -6,7 +6,8 @@
       "email": "johndoe@example.com",
       "password": "password123",
       "dateOfBirth": "1990-05-15",
-      "gender": "male"
+      "gender": "male",
+      "profilePicture": "assets/images/logos/profile_pic_demo_1.png"
     },
     {
       "id": 2,
@@ -14,7 +15,8 @@
       "email": "janesmith@example.com",
       "password": "6cb75f652a9b52798eb6cf2201057c73",
       "dateOfBirth": "1992-08-24",
-      "gender": "female"
+      "gender": "female",
+      "profilePicture": "assets/images/logos/profile_pic_demo_2.png"
     },
     {
       "id": 3,
@@ -22,7 +24,8 @@
       "email": "alicejohnson@example.com",
       "password": "098f6bcd4621d373cade4e832627b4f6",
       "dateOfBirth": "1988-03-10",
-      "gender": "female"
+      "gender": "female",
+      "profilePicture": "https://example.com/profile_pictures/alicejohnson.jpg"
     },
     {
       "id": 4,
@@ -30,7 +33,8 @@
       "email": "bobbrown@example.com",
       "password": "25d55ad283aa400af464c76d713c07ad",
       "dateOfBirth": "1995-07-22",
-      "gender": "male"
+      "gender": "male",
+      "profilePicture": "https://example.com/profile_pictures/bobbrown.jpg"
     }
   ]
 }

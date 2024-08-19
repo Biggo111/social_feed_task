@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:social_feed_task/features/social_feed/domain/entities/posts_model.dart';
 
 class PostImageGrid extends StatelessWidget {
-  final List<String> imagePaths;
+  final List<AttachedContent> imagePaths;
 
   const PostImageGrid({super.key, required this.imagePaths});
 
@@ -28,7 +29,7 @@ class PostImageGrid extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(12),
       child: Image.asset(
-        imagePaths[0],
+        imagePaths[0].url,
         width: double.infinity,
         height: double.infinity,
         fit: BoxFit.cover,
@@ -45,7 +46,7 @@ class PostImageGrid extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.asset(
-                imagePaths[0],
+                imagePaths[0].url,
                 fit: BoxFit.cover,
                 height: double.infinity,
               ),
@@ -59,7 +60,7 @@ class PostImageGrid extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.asset(
-                imagePaths[1],
+                imagePaths[1].url,
                 fit: BoxFit.cover,
                 height: double.infinity,
               ),
@@ -80,7 +81,7 @@ class PostImageGrid extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.asset(
-                imagePaths[0],
+                imagePaths[0].url,
                 fit: BoxFit.cover,
                 height: double.infinity,
               ),
@@ -98,7 +99,7 @@ class PostImageGrid extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(12),
                     child: Image.asset(
-                      imagePaths[1],
+                      imagePaths[1].url,
                       fit: BoxFit.cover,
                       width: double.infinity,
                     ),
@@ -125,7 +126,7 @@ class PostImageGrid extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(12),
           child: Image.asset(
-            imagePaths[2],
+            imagePaths[2].url,
             fit: BoxFit.cover,
             width: double.infinity,
             height: double.infinity,

@@ -9,6 +9,7 @@ import 'package:social_feed_task/features/explore/presentation/screens/explore_s
 import 'package:social_feed_task/features/notification/presentation/screens/notification_screen.dart';
 import 'package:social_feed_task/features/settings/presentation/screens/settings_screen.dart';
 import 'package:social_feed_task/features/social_feed/presentation/screens/feed_screen/feed_screen.dart';
+import 'package:social_feed_task/features/social_feed/presentation/viewmodels/feed_viewmodel.dart';
 
 class StartupScreen extends ConsumerStatefulWidget {
   const StartupScreen({super.key});
@@ -43,6 +44,15 @@ class _StartupScreenState extends ConsumerState<StartupScreen> {
         ),
       ],
     ));
+  }
+
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp){
+      ref.read(feedControllerProvider.notifier).fetchPosts();
+    });
+    super.initState();
   }
 
   @override

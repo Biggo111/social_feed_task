@@ -1,3 +1,19 @@
+class UsersModel {
+    List<User> users;
+
+    UsersModel({
+        required this.users,
+    });
+
+    factory UsersModel.fromJson(Map<String, dynamic> json) => UsersModel(
+        users: List<User>.from(json["users"].map((x) => User.fromJson(x))),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "users": List<dynamic>.from(users.map((x) => x.toJson())),
+    };
+}
+
 class User {
     int id;
     String name;

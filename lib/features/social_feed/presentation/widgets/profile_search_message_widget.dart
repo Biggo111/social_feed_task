@@ -4,8 +4,10 @@ import 'package:social_feed_task/core/constants/colors_palette.dart';
 import 'package:social_feed_task/core/global_components/text_fields/k_text_field.dart';
 
 class ProfileSearchMessageWidget extends StatelessWidget {
+  final String myProfilePicture;
   const ProfileSearchMessageWidget({
     super.key,
+    required this.myProfilePicture,
   });
 
   @override
@@ -22,7 +24,7 @@ class ProfileSearchMessageWidget extends StatelessWidget {
               color: Colors.transparent,
               borderRadius: BorderRadius.circular(16),
             ),
-            child: Image.asset(AssetPath.nameIcon),
+            child: Image.asset(myProfilePicture, fit: BoxFit.cover),
           ),
           const SizedBox(width: 10),
           Expanded(

@@ -2,16 +2,18 @@ import 'package:dio/dio.dart';
 import 'mock_interceptor.dart';
 
 class ApiClient {
-  final Dio _dio;
-  String? _accessToken;
+  // final Dio _dio;
+  // String? _accessToken;
 
-  ApiClient(this._dio) {
-    _dio.interceptors.add(MockInterceptor());
+  final Dio client = Dio();
+
+  ApiClient() {
+    client.interceptors.add(MockInterceptor());
   }
 
-  void setAccessToken(String token) {
-    _accessToken = token;
-  }
+  // void setAccessToken(String token) {
+  //   _accessToken = token;
+  // }
 
   // Future<Response> get(String path) async {
   //   final options = Options(

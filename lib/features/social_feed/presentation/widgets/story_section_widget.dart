@@ -3,6 +3,7 @@ import 'package:social_feed_task/core/constants/colors_palette.dart';
 import 'package:social_feed_task/core/global_components/text_styles/app_fons.dart';
 
 class StorySectionWidget extends StatelessWidget {
+  
   const StorySectionWidget({
     super.key,
   });

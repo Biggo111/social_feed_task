@@ -17,6 +17,8 @@ class KBottomNavigationBar extends ConsumerStatefulWidget {
 
 class _KBottomNavigationBarState extends ConsumerState<KBottomNavigationBar> {
 
+  
+
   @override
   Widget build(BuildContext context) {
     final bottomNavigationBarState = ref.watch(kBottomNavigationBarControllerProvider);

@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:social_feed_task/core/constants/asset_path.dart';
 import 'package:social_feed_task/core/constants/colors_palette.dart';
 import 'package:social_feed_task/core/global_components/text_styles/app_fons.dart';
+import 'package:social_feed_task/features/social_feed/domain/entities/posts_model.dart';
 import 'package:social_feed_task/features/social_feed/presentation/components/post_image_grid.dart';
 
 class PostCard extends StatelessWidget {
+  final Post postDetails;
   const PostCard({
     super.key,
+    required this.postDetails,
   });
 
   @override
@@ -26,7 +29,7 @@ class PostCard extends StatelessWidget {
                     CircleAvatar(
                       radius: 24,
                       backgroundColor: AppColors.grey,
-                      child: Image.asset(AssetPath.nameIcon),
+                      child: Image.asset(postDetails.userProfilePicture, fit: BoxFit.cover,),
                     ),
                     const SizedBox(width: 10),
                     Container(
@@ -34,12 +37,12 @@ class PostCard extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('John Doe',
+                          Text(postDetails.userName,
                               style: AppFonts.bodyMedium.copyWith(
                                   color: AppColors.black87,
                                   fontSize: 18,
                                   fontWeight: FontWeight.w700)),
-                          Text('15 hour. Public',
+                          Text('${postDetails.postTime}. ${postDetails.postType}',
                               style: AppFonts.bodyMedium.copyWith(
                                   color: AppColors.black54,
                                   fontSize: 14,
@@ -55,13 +58,7 @@ class PostCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          const PostImageGrid(imagePaths: [
-            'assets/images/logos/demo_image.png',
-            'assets/images/logos/demo_image_2.png',
-            'assets/images/logos/demo_image_3.png',
-            'assets/images/logos/demo_image_4.png',
-            'assets/images/logos/demo_image_5.png',
-          ]),
+          PostImageGrid(imagePaths: postDetails.attachedContent),
           const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -102,9 +99,9 @@ class PostCard extends StatelessWidget {
                       child: CircleAvatar(
                         radius: 14,
                         backgroundColor: AppColors.grey,
-                        child: const Text(
-                          '+99',
-                          style: TextStyle(
+                        child: Text(
+                          '${postDetails.likesCount - 3}+',
+                          style: const TextStyle(
                             color: AppColors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 10,
@@ -116,13 +113,13 @@ class PostCard extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Text('3 Comments', style: AppFonts.bodyMedium.copyWith(
+                    Text('${postDetails.commentsCount} Comments', style: AppFonts.bodyMedium.copyWith(
                       color: AppColors.grey,
                       fontSize: 16,
                       fontWeight: FontWeight.normal
                     )),
                     const SizedBox(width: 20),
-                    Text('5 Shares', style: AppFonts.bodyMedium.copyWith(
+                    Text('${postDetails.sharesCount} Shares', style: AppFonts.bodyMedium.copyWith(
                       color: AppColors.grey,
                       fontSize: 16,
                       fontWeight: FontWeight.normal

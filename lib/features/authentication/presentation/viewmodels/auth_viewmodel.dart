@@ -22,10 +22,7 @@ class AuthController extends StateNotifier<AuthGeneric> with ProcessAuthMixin{
     state = state.update(isLoading: true);
     try {
       await Future.delayed(const Duration(seconds: 1));
-      // if(!isEmailPasswordGiven(email, password)){
-      //   ShowToast.customToast("Email and Password are required", bgColor: AppColors.red);
-      //   return;
-      // }
+
       isEmailPasswordGiven(email, password);
       final userResponse = await _loginUseCase.loginUser(email, password);
       

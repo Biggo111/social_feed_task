@@ -4,16 +4,13 @@
             "postId": 1,
             "userId": 1,
             "userName": "John Doe",
+            "userProfilePicture": "assets/images/logos/profile_pic_demo_1.png",
             "postTime": "2024-08-20T14:30:00",
             "postType": "public",
             "attachedContent": [
                 {
                     "type": "image",
-                    "url": "https://example.com/image1.jpg"
-                },
-                {
-                    "type": "video",
-                    "url": "https://example.com/video1.mp4"
+                    "url": "assets/images/logos/demo_image.png"
                 }
             ],
             "caption": "Had a great day at the beach!",
@@ -51,12 +48,25 @@
             "postId": 2,
             "userId": 3,
             "userName": "Alice Johnson",
+            "userProfilePicture": "assets/images/logos/profile_pic_demo_2.png",
             "postTime": "2024-08-19T10:00:00",
             "postType": "friends",
             "attachedContent": [
                 {
                     "type": "image",
-                    "url": "https://example.com/image2.jpg"
+                    "url": "assets/images/logos/demo_image_2.png"
+                },
+                {
+                    "type": "image",
+                    "url": "assets/images/logos/demo_image_3.png"
+                },
+                {
+                    "type": "image",
+                    "url": "assets/images/logos/demo_image_4.png"
+                },
+                {
+                    "type": "image",
+                    "url": "assets/images/logos/demo_image_1.png"
                 }
             ],
             "caption": "Beautiful sunrise today!",

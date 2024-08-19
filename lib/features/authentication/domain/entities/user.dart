@@ -1,39 +1,35 @@
 class User {
-    int userId;
-    String username;
+    int id;
+    String name;
     String email;
     String password;
-    String name;
-    String bio;
-    String profilePicture;
+    DateTime dateOfBirth;
+    String gender;
 
     User({
-        required this.userId,
-        required this.username,
+        required this.id,
+        required this.name,
         required this.email,
         required this.password,
-        required this.name,
-        required this.bio,
-        required this.profilePicture,
+        required this.dateOfBirth,
+        required this.gender,
     });
 
     factory User.fromJson(Map<String, dynamic> json) => User(
-        userId: json["user_id"],
-        username: json["username"],
+        id: json["id"],
+        name: json["name"],
         email: json["email"],
         password: json["password"],
-        name: json["name"],
-        bio: json["bio"],
-        profilePicture: json["profile_picture"],
+        dateOfBirth: DateTime.parse(json["dateOfBirth"]),
+        gender: json["gender"],
     );
 
     Map<String, dynamic> toJson() => {
-        "user_id": userId,
-        "username": username,
+        "id": id,
+        "name": name,
         "email": email,
         "password": password,
-        "name": name,
-        "bio": bio,
-        "profile_picture": profilePicture,
+        "dateOfBirth": "${dateOfBirth.year.toString().padLeft(4, '0')}-${dateOfBirth.month.toString().padLeft(2, '0')}-${dateOfBirth.day.toString().padLeft(2, '0')}",
+        "gender": gender,
     };
 }

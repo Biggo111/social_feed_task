@@ -7,10 +7,10 @@ class MockInterceptor extends Interceptor {
   @override
   Future<void> onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
     String mockFilePath = '';
-    final isAuthRequest = options.path.contains('/user/login');
+    final isAuthRequest = options.path.contains('/user/users');
     final isFeedRequest = options.path.contains('/feed');
     
-    // Attach token if available (for non-auth requests)
+    
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('auth_token');
     
@@ -18,9 +18,9 @@ class MockInterceptor extends Interceptor {
       options.headers['Authorization'] = 'Bearer $token';
     }
 
-    // Mock data paths
+
     if (isAuthRequest) {
-      mockFilePath = 'assets/json/user/login.json';
+      mockFilePath = 'assets/json/user/users.json';
     } else if (isFeedRequest) {
       // Validate token
       if (token != 'mock_access_token') {
@@ -37,7 +37,7 @@ class MockInterceptor extends Interceptor {
       mockFilePath = 'assets/json/feed/posts.json';
     }
 
-    // Load mock data and respond
+    
     if (mockFilePath.isNotEmpty) {
       final mockData = await rootBundle.loadString(mockFilePath);
       handler.resolve(Response(
@@ -52,8 +52,8 @@ class MockInterceptor extends Interceptor {
 
   @override
   Future<void> onResponse(Response response, ResponseInterceptorHandler handler) async {
-    // Handle login response: save the token if it's a login request
-    if (response.requestOptions.path.contains('/user/login')) {
+   
+    if (response.requestOptions.path.contains('/user/users')) {
       final token = response.data['token'];
       if (token != null) {
         final prefs = await SharedPreferences.getInstance();

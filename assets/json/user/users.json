@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "password": "password123",
+      "dateOfBirth": "1990-05-15",
+      "gender": "male"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "janesmith@example.com",
+      "password": "6cb75f652a9b52798eb6cf2201057c73",
+      "dateOfBirth": "1992-08-24",
+      "gender": "female"
+    },
+    {
+      "id": 3,
+      "name": "Alice Johnson",
+      "email": "alicejohnson@example.com",
+      "password": "098f6bcd4621d373cade4e832627b4f6",
+      "dateOfBirth": "1988-03-10",
+      "gender": "female"
+    },
+    {
+      "id": 4,
+      "name": "Bob Brown",
+      "email": "bobbrown@example.com",
+      "password": "25d55ad283aa400af464c76d713c07ad",
+      "dateOfBirth": "1995-07-22",
+      "gender": "male"
+    }
+  ]
+}

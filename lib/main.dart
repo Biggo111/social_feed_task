@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:social_feed_task/core/constants/colors_palette.dart';
-import 'package:social_feed_task/features/authentication/presentation/screens/login_screen.dart';
 import 'package:social_feed_task/features/authentication/presentation/screens/splash_screen.dart';
 import 'package:social_feed_task/services/di/service_locator_di.dart';
 import 'package:social_feed_task/services/navigation_service/navigator.dart';

@@ -1,0 +1,87 @@
+{
+    "posts": [
+        {
+            "postId": 1,
+            "userId": 1,
+            "userName": "John Doe",
+            "postTime": "2024-08-20T14:30:00",
+            "postType": "public",
+            "attachedContent": [
+                {
+                    "type": "image",
+                    "url": "https://example.com/image1.jpg"
+                },
+                {
+                    "type": "video",
+                    "url": "https://example.com/video1.mp4"
+                }
+            ],
+            "caption": "Had a great day at the beach!",
+            "likesCount": 150,
+            "commentsCount": 20,
+            "sharesCount": 10,
+            "likes": [
+                {
+                    "userId": 2,
+                    "userName": "Jane Smith"
+                },
+                {
+                    "userId": 3,
+                    "userName": "Alice Johnson"
+                }
+            ],
+            "comments": [
+                {
+                    "commentId": 1,
+                    "userId": 2,
+                    "userName": "Jane Smith",
+                    "commentTime": "2024-08-20T15:00:00",
+                    "content": "Looks amazing!"
+                },
+                {
+                    "commentId": 2,
+                    "userId": 4,
+                    "userName": "Bob Brown",
+                    "commentTime": "2024-08-20T16:00:00",
+                    "content": "Wish I was there!"
+                }
+            ]
+        },
+        {
+            "postId": 2,
+            "userId": 3,
+            "userName": "Alice Johnson",
+            "postTime": "2024-08-19T10:00:00",
+            "postType": "friends",
+            "attachedContent": [
+                {
+                    "type": "image",
+                    "url": "https://example.com/image2.jpg"
+                }
+            ],
+            "caption": "Beautiful sunrise today!",
+            "likesCount": 80,
+            "commentsCount": 5,
+            "sharesCount": 3,
+            "likes": [
+                {
+                    "userId": 1,
+                    "userName": "John Doe"
+                },
+                {
+                    "userId": 2,
+                    "userName": "Jane Smith"
+                }
+            ],
+            "comments": [
+                {
+                    "commentId": 3,
+                    "userId": 1,
+                    "userName": "John Doe",
+                    "commentTime": "2024-08-19T11:00:00",
+                    "content": "Stunning view!"
+                }
+            ]
+        }
+    ]
+}

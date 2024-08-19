@@ -30,8 +30,6 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
     final feedState = ref.watch(feedControllerProvider);
     final userState = ref.watch(authControllerProvider);
 
-    debug(data: "post number 1: ${userState.user!.profilePicture}");
-
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(

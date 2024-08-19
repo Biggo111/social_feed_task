@@ -30,4 +30,10 @@ class AssetPath {
   static const String shareIcon = 'assets/images/icons/share_icon.png';
   static const String gifIcon = 'assets/images/icons/gif_icon.png';
   static const String sendIcon = 'assets/images/icons/send_icon.png';
+
+  static const String feedIcon = 'assets/images/icons/feed_icon.png';
+  static const String communityIcon = 'assets/images/icons/community_icon.png';
+  static const String exploreIcon = 'assets/images/icons/explore_icon.png';
+  static const String notificationIcon = 'assets/images/icons/notification_icon.png';
+  static const String settingsIcon = 'assets/images/icons/settings_icon.png';
 }

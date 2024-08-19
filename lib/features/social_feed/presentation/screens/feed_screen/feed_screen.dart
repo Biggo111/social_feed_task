@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:social_feed_task/core/global_components/bottom_navigation_bar/k_bottom_navigation_bar.dart';
 import 'package:social_feed_task/features/social_feed/presentation/components/post_card.dart';
 import 'package:social_feed_task/features/social_feed/presentation/widgets/post_section_widget.dart';
 import 'package:social_feed_task/features/social_feed/presentation/widgets/story_section_widget.dart';
@@ -37,6 +38,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
           ),
         ),
       ),
+      // bottomNavigationBar: const KBottomNavigationBar(),
     );
   }
 }

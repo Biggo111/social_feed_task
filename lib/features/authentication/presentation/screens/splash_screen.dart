@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_feed_task/core/constants/asset_path.dart';
 import 'package:social_feed_task/features/authentication/presentation/screens/login_screen.dart';
-import 'package:social_feed_task/features/social_feed/presentation/screens/feed_screen/feed_screen.dart';
 import 'package:social_feed_task/services/di/service_locator_di.dart';
+import 'package:social_feed_task/startup/startup_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -31,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const FeedScreen(),
+              builder: (context) => const StartupScreen(),
             ));
       });
     } else {

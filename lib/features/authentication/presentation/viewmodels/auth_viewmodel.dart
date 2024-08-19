@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:social_feed_task/core/constants/colors_palette.dart';
-import 'package:social_feed_task/core/global_components/toast/show_toast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_feed_task/features/authentication/domain/entities/user.dart';
 import 'package:social_feed_task/features/authentication/domain/usecases/login_use_case.dart';
+import 'package:social_feed_task/features/authentication/presentation/screens/login_screen.dart';
 import 'package:social_feed_task/features/authentication/presentation/viewmodels/auth_generic/auth_generic.dart';
 import 'package:social_feed_task/features/authentication/presentation/viewmodels/mixin/process_auth_mixin.dart';
-import 'package:social_feed_task/features/social_feed/presentation/screens/feed_screen/feed_screen.dart';
 import 'package:social_feed_task/services/debugger/debugger.dart';
+import 'package:social_feed_task/services/di/service_locator_di.dart';
 import 'package:social_feed_task/services/navigation_service/navigator.dart';
+import 'package:social_feed_task/startup/startup_screen.dart';
 
 final authControllerProvider = StateNotifierProvider<AuthController, AuthGeneric>((ref) => AuthController(ref: ref));
 class AuthController extends StateNotifier<AuthGeneric> with ProcessAuthMixin{
@@ -44,7 +45,7 @@ class AuthController extends StateNotifier<AuthGeneric> with ProcessAuthMixin{
   void handleAfterLoginNavigation(){
     if(!state.error){
       debug(data: "User Logged In: ${state.user!.email}");
-      NavigationService.navigatorKey.currentState!.push(CupertinoPageRoute(builder: (context) => const FeedScreen()));
+      NavigationService.navigatorKey.currentState!.push(CupertinoPageRoute(builder: (context) => const StartupScreen()));
     } else{
       debug(data: "Login Failed");
     }
@@ -56,6 +57,14 @@ class AuthController extends StateNotifier<AuthGeneric> with ProcessAuthMixin{
 
   void toggleRememberMe(){
     state = state.update(toggleRememberMe: !state.toggleRememberMe);
+  }
+
+  void handleLogout(){
+    state = state.update(user: null);
+    final pref = sl<SharedPreferences>();
+    pref.remove('auth_token');
+
+    NavigationService.navigatorKey.currentState!.pushAndRemoveUntil(CupertinoPageRoute(builder: (context) => const LoginScreen()), (route) => false);
   }
 
 }

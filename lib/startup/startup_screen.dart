@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:social_feed_task/core/global_components/bottom_navigation_bar/k_bottom_navigation_bar.dart';
@@ -25,12 +27,39 @@ class _StartupScreenState extends ConsumerState<StartupScreen> {
     SettingsScreen(),
   ];
 
+
+  Future _onWillPop() {
+    return showDialog(context: context, builder: (context) => AlertDialog(
+      title: const Text('Are you sure?'),
+      content: const Text('Do you want to exit the app?'),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(false),
+          child: const Text('No'),
+        ),
+        TextButton(
+          onPressed: () => exit(0),
+          child: const Text('Yes'),
+        ),
+      ],
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     final bottomNavigationBarState = ref.watch(kBottomNavigationBarControllerProvider);
-    return Scaffold(
-      body: _screens[bottomNavigationBarState.currentIndex],
-      bottomNavigationBar: const KBottomNavigationBar(),
+    return PopScope(
+      onPopInvoked: (isPop){
+        if(isPop){
+          _onWillPop();
+        } else {
+          bottomNavigationBarState.currentIndex;
+        }
+      },
+      child: Scaffold(
+        body: _screens[bottomNavigationBarState.currentIndex],
+        bottomNavigationBar: const KBottomNavigationBar(),
+      ),
     );
   }
 }

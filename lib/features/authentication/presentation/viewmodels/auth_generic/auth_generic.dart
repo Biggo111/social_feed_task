@@ -1,3 +1,4 @@
+import 'package:social_feed_task/features/authentication/data/models/users_model.dart';
 import 'package:social_feed_task/features/authentication/domain/entities/user.dart';
 
 class AuthGeneric{
@@ -6,7 +7,7 @@ class AuthGeneric{
   final bool error;
   final bool passwordVisible;
   final bool toggleRememberMe;
-  final List<User> users;
+  final List<UserData> users;
 
   AuthGeneric({
     this.user,
@@ -17,7 +18,7 @@ class AuthGeneric{
     this.users = const []
   });
 
-  AuthGeneric update({User? user, bool? error, bool? isLoading, bool? passwordVisible, bool? toggleRememberMe, List<User>? users}){
+  AuthGeneric update({User? user, bool? error, bool? isLoading, bool? passwordVisible, bool? toggleRememberMe, List<UserData>? users}){
     return AuthGeneric(
       user: user ?? this.user,
       error: error ?? this.error,

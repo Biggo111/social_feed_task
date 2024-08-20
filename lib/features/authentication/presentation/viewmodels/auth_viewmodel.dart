@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:social_feed_task/features/authentication/data/models/users_model.dart';
 import 'package:social_feed_task/features/authentication/domain/entities/user.dart';
 import 'package:social_feed_task/features/authentication/domain/usecases/login_use_case.dart';
 import 'package:social_feed_task/features/authentication/presentation/screens/login_screen.dart';
@@ -66,7 +67,7 @@ class AuthController extends StateNotifier<AuthGeneric> with ProcessAuthMixin{
     state = state.update(isLoading: true);
     try {
       final users = await _loginUseCase.fetchAllUser();
-      if(users is List<User>){
+      if(users is List<UserData>){
         state = state.update(isLoading: false, users: users);
       } else{
         state = state.update(isLoading: false, error: true);

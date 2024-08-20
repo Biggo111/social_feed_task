@@ -5,12 +5,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_feed_task/features/authentication/data/models/users_model.dart';
+import 'package:social_feed_task/features/authentication/domain/entities/user.dart';
 import 'package:social_feed_task/services/debugger/debugger.dart';
 
 abstract class AuthRemoteDataSource {
   Future<String?> login(String email, String password);
   Future<Map<String, dynamic>?> getUserData(String email);
-  Future<List<User>> fetchAllUser();
+  Future<List<UserData>> fetchAllUser();
   Future<User> fetchMyData(String userId);
 }
 
@@ -68,7 +69,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
 
   @override
-  Future<List<User>> fetchAllUser() async {
+  Future<List<UserData>> fetchAllUser() async {
     final String response = await rootBundle.loadString('assets/json/user/users.json');
     final data = json.decode(response);
 

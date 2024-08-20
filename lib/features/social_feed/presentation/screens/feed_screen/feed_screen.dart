@@ -15,7 +15,6 @@ class FeedScreen extends ConsumerStatefulWidget {
 }
 
 class _FeedScreenState extends ConsumerState<FeedScreen> {
-
   @override
   Widget build(BuildContext context) {
     final feedState = ref.watch(feedControllerProvider);
@@ -34,7 +33,26 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                         : 'assets/images/profile_pic_demo_1.png',
                   ),
                   const SizedBox(height: 10),
-                  const StorySectionWidget(),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    height: 120,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: userState.users.length,
+                          itemBuilder: (context, index) {
+                            return StorySectionWidget(
+                              profilePicture: userState.users[index].profilePicture,
+                              name: userState.users[index].name,
+                            );
+                          }
+                        ),
+                      ],
+                    ),
+                  ),
                   const SizedBox(height: 5),
                   const PostSectionWidget(),
                   const SizedBox(height: 20),

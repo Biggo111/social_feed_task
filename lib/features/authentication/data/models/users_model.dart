@@ -1,12 +1,12 @@
 class UsersModel {
-    List<User> users;
+    List<UserData> users;
 
     UsersModel({
         required this.users,
     });
 
     factory UsersModel.fromJson(Map<String, dynamic> json) => UsersModel(
-        users: List<User>.from(json["users"].map((x) => User.fromJson(x))),
+        users: List<UserData>.from(json["users"].map((x) => UserData.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
@@ -14,7 +14,7 @@ class UsersModel {
     };
 }
 
-class User {
+class UserData {
     int id;
     String name;
     String email;
@@ -23,7 +23,7 @@ class User {
     String gender;
     String profilePicture;
 
-    User({
+    UserData({
         required this.id,
         required this.name,
         required this.email,
@@ -33,7 +33,7 @@ class User {
         required this.profilePicture,
     });
 
-    factory User.fromJson(Map<String, dynamic> json) => User(
+    factory UserData.fromJson(Map<String, dynamic> json) => UserData(
         id: json["id"],
         name: json["name"],
         email: json["email"],

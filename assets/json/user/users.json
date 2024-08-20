@@ -25,7 +25,7 @@
       "password": "098f6bcd4621d373cade4e832627b4f6",
       "dateOfBirth": "1988-03-10",
       "gender": "female",
-      "profilePicture": "https://example.com/profile_pictures/alicejohnson.jpg"
+      "profilePicture": "assets/images/logos/demo_image.png"
     },
     {
       "id": 4,
@@ -34,7 +34,7 @@
       "password": "25d55ad283aa400af464c76d713c07ad",
       "dateOfBirth": "1995-07-22",
       "gender": "male",
-      "profilePicture": "https://example.com/profile_pictures/bobbrown.jpg"
+      "profilePicture": "assets/images/logos/meetmax_logo.png"
     }
   ]
 }

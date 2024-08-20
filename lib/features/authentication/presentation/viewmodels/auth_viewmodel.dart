@@ -45,12 +45,15 @@ class AuthController extends StateNotifier<AuthGeneric> with ProcessAuthMixin{
 
 
   Future<void> getUserData()async{
+    debug(data: "Get User Data called");
     final prefs = await SharedPreferences.getInstance();
      final userId = prefs.getString('user_id');
+     debug(data: "User Id in shared_pref: $userId");
     if(userId != null && userId.isNotEmpty){
       final user = await _loginUseCase.fetchMyData(userId);
+      debug(data: "User Data: $user");
       if(user is User){
-        debug(data: "User Data: ${user.name}");
+        
         state = state.update(user: user);
       } else{
         state = state.update(error: true);

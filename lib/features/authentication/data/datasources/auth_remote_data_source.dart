@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_feed_task/features/authentication/data/models/users_model.dart';
+import 'package:social_feed_task/services/debugger/debugger.dart';
 
 abstract class AuthRemoteDataSource {
   Future<String?> login(String email, String password);
@@ -84,10 +85,13 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     final String response = await rootBundle.loadString('assets/json/user/users.json');
     final data = json.decode(response);
 
+    final int userIdInt = int.tryParse(userId)!;
+
     final user = data['users'].firstWhere(
-      (user) => user['id'] == userId,
+      (user) => user['id'] == userIdInt,
       orElse: () => null,
     );
+    debug(data: "user fetch my data: $user");
 
     return User.fromJson(user);
   }

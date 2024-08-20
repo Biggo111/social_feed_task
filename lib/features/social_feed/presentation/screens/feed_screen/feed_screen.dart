@@ -36,7 +36,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
           child: Column(
             children: [
               ProfileSearchMessageWidget(
-                myProfilePicture: userState.user!.profilePicture,
+                myProfilePicture: userState.user != null ? userState.user!.profilePicture : 'assets/images/profile_pic_demo_1.png',
               ),
               const SizedBox(height: 10),
               const StorySectionWidget(),

@@ -10,6 +10,7 @@ abstract class AuthRemoteDataSource {
   Future<String?> login(String email, String password);
   Future<Map<String, dynamic>?> getUserData(String email);
   Future<List<User>> fetchAllUser();
+  Future<User> fetchMyData(String userId);
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
@@ -75,4 +76,19 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     return users;
   }
 
+  @override
+  Future<User> fetchMyData(String userId) async {
+    // final prefs = await SharedPreferences.getInstance();
+    // final userId = prefs.getString('user_id');
+
+    final String response = await rootBundle.loadString('assets/json/user/users.json');
+    final data = json.decode(response);
+
+    final user = data['users'].firstWhere(
+      (user) => user['id'] == userId,
+      orElse: () => null,
+    );
+
+    return User.fromJson(user);
+  }
 }

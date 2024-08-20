@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:social_feed_task/core/constants/asset_path.dart';
 import 'package:social_feed_task/core/constants/colors_palette.dart';
 import 'package:social_feed_task/core/global_components/text_fields/k_text_field.dart';
-
 class ProfileSearchMessageWidget extends StatelessWidget {
   final String myProfilePicture;
   const ProfileSearchMessageWidget({
@@ -29,6 +28,7 @@ class ProfileSearchMessageWidget extends StatelessWidget {
           const SizedBox(width: 10),
           Expanded(
             child: KTextField(
+              textEditingEnabled: true,
               hintText: 'Search for Something here...',
               height: 40,
               borderColor: AppColors.grey,

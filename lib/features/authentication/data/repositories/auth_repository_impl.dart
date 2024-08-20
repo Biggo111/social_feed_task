@@ -40,4 +40,12 @@ class AuthRepositoryImpl implements AuthRepository {
 
     return User.fromJson(userData!);
   }
+
+
+  @override
+  Future<Object> fetchMyData(String userId)async{
+    final userData = await remoteDataSource.fetchMyData(userId);
+
+    return User.fromJson(userData.toJson());
+  }
 }

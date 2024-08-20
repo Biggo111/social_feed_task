@@ -141,7 +141,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         borderColor: AppColors.black26,
                         icon: Image.asset(AssetPath.lockIcon, width: 16, fit: BoxFit.contain),
                         showPassword: true,
-                        obscureText: authState.passwordVisible,
+                        obscureText: !authState.passwordVisible,
                         onTogglePasswordVisibility: authController.togglePasswordVisibility,
                       ),
                       const SizedBox(height: 15),

@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:social_feed_task/core/constants/asset_path.dart';
 import 'package:social_feed_task/core/constants/colors_palette.dart';
 import 'package:social_feed_task/core/global_components/text_fields/k_text_field.dart';
 import 'package:social_feed_task/core/global_components/text_styles/app_fons.dart';
+import 'package:social_feed_task/features/social_feed/presentation/screens/create_post/create_post_screen.dart';
+import 'package:social_feed_task/services/navigation_service/navigator.dart';
 
 class PostSectionWidget extends StatelessWidget {
   const PostSectionWidget({
@@ -23,12 +26,19 @@ class PostSectionWidget extends StatelessWidget {
                 child: Image.asset(AssetPath.nameIcon),
               ),
               const SizedBox(width: 10),
-              const Expanded(
-                child: KTextField(
-                  hintText: 'What\'s happening?',
-                  height: 40,
-                  backgroundColor: AppColors.white54,
-                  borderColor: AppColors.white,
+              Expanded(
+                child: InkWell(
+                  onTap: (){
+                    NavigationService.navigatorKey.currentState!.push(CupertinoPageRoute(builder: (_)=>const CreatePostScreen()));
+                    // Navigator.push(context, CupertinoPageRoute(builder: (_)=> const CreatePostScreen()));
+                  },
+                  child: const KTextField(
+                    textEditingEnabled: true,
+                    hintText: 'What\'s happening?',
+                    height: 40,
+                    backgroundColor: AppColors.white54,
+                    borderColor: AppColors.white,
+                  ),
                 ),
               ),
             ],

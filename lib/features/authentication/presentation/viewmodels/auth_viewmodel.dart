@@ -28,6 +28,10 @@ class AuthController extends StateNotifier<AuthGeneric> with ProcessAuthMixin{
       
       if(userResponse is User){
         debug(data: "User Response: ${userResponse.name}");
+
+        final prefs = sl<SharedPreferences>();
+        await prefs.setString('user_id', userResponse.id.toString());
+
         state = state.update(isLoading: false, user: userResponse, error: false);
         handleAfterLoginNavigation();
       } else{
@@ -41,10 +45,15 @@ class AuthController extends StateNotifier<AuthGeneric> with ProcessAuthMixin{
 
 
   Future<void> getUserData()async{
-    final pref = sl<SharedPreferences>();
-    final savedToken = pref.get('auth_token');
-    if(savedToken != null){
-      
+    final prefs = await SharedPreferences.getInstance();
+     final userId = prefs.getString('user_id');
+    if(userId != null && userId.isNotEmpty){
+      final user = await _loginUseCase.fetchMyData(userId);
+      if(user is User){
+        state = state.update(user: user);
+      } else{
+        state = state.update(error: true);
+      }
     }
   }
 

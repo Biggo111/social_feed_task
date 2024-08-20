@@ -18,4 +18,8 @@ class LoginUseCase {
   Future<Object> getUserData(String email)async{
     return await repository.getUserData(email);
   }
+
+  Future<Object> fetchMyData(String userId)async{
+    return await repository.fetchMyData(userId);
+  }
 }

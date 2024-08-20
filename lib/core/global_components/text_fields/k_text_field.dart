@@ -16,7 +16,7 @@ class KTextField extends StatelessWidget {
   final Widget? icon;
   final bool showPassword;
   final VoidCallback? onTogglePasswordVisibility;
-
+  final bool textEditingEnabled;
   const KTextField({
     super.key,
     this.hintText,
@@ -32,6 +32,7 @@ class KTextField extends StatelessWidget {
     this.showPassword = false,
     this.onTogglePasswordVisibility,
     this.backgroundColor = Colors.transparent,
+    this.textEditingEnabled = false
   });
 
   @override
@@ -55,6 +56,7 @@ class KTextField extends StatelessWidget {
             child: Container(
               color: backgroundColor,
               child: TextFormField(
+                readOnly: textEditingEnabled,
                 controller: controller,
                 keyboardType: keyboardType,
                 obscureText: obscureText,

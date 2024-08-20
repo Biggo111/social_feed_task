@@ -22,8 +22,7 @@ class MockInterceptor extends Interceptor {
     if (isAuthRequest) {
       mockFilePath = 'assets/json/user/users.json';
     } else if (isFeedRequest) {
-      // Validate token
-      if (token != 'mock_access_token') {
+      if (token == null) {
         handler.reject(DioException(
           requestOptions: options,
           response: Response(

@@ -6,7 +6,6 @@ import 'package:social_feed_task/features/social_feed/presentation/viewmodels/fe
 import 'package:social_feed_task/features/social_feed/presentation/widgets/post_section_widget.dart';
 import 'package:social_feed_task/features/social_feed/presentation/widgets/story_section_widget.dart';
 import 'package:social_feed_task/features/social_feed/presentation/widgets/profile_search_message_widget.dart';
-import 'package:social_feed_task/services/debugger/debugger.dart';
 
 class FeedScreen extends ConsumerStatefulWidget {
   const FeedScreen({super.key});
@@ -17,14 +16,6 @@ class FeedScreen extends ConsumerStatefulWidget {
 
 class _FeedScreenState extends ConsumerState<FeedScreen> {
 
-  // @override
-  // void initState() {
-  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp){
-  //     ref.read(authControllerProvider.notifier).getUserData();
-  //   });
-  //   super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
     final feedState = ref.watch(feedControllerProvider);
@@ -32,28 +23,35 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
 
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              ProfileSearchMessageWidget(
-                myProfilePicture: userState.user != null ? userState.user!.profilePicture : 'assets/images/profile_pic_demo_1.png',
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  ProfileSearchMessageWidget(
+                    myProfilePicture: userState.user != null
+                        ? userState.user!.profilePicture
+                        : 'assets/images/profile_pic_demo_1.png',
+                  ),
+                  const SizedBox(height: 10),
+                  const StorySectionWidget(),
+                  const SizedBox(height: 5),
+                  const PostSectionWidget(),
+                  const SizedBox(height: 20),
+                ],
               ),
-              const SizedBox(height: 10),
-              const StorySectionWidget(),
-              const SizedBox(height: 5),
-              const PostSectionWidget(),
-              const SizedBox(height: 20),
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: feedState.postsModel.length,
-                itemBuilder: (context, index) {
+            ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
                   return PostCard(
                     postDetails: feedState.postsModel[index],
                   );
-                }
-              )
-            ],
-          ),
+                },
+                childCount: feedState.postsModel.length,
+              ),
+            ),
+          ],
         ),
       ),
       // bottomNavigationBar: const KBottomNavigationBar(),

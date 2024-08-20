@@ -50,6 +50,7 @@ class AuthController extends StateNotifier<AuthGeneric> with ProcessAuthMixin{
     if(userId != null && userId.isNotEmpty){
       final user = await _loginUseCase.fetchMyData(userId);
       if(user is User){
+        debug(data: "User Data: ${user.name}");
         state = state.update(user: user);
       } else{
         state = state.update(error: true);
@@ -94,6 +95,7 @@ class AuthController extends StateNotifier<AuthGeneric> with ProcessAuthMixin{
     state = state.update(user: null);
     final pref = sl<SharedPreferences>();
     pref.remove('auth_token');
+    pref.remove('user_id');
 
     NavigationService.navigatorKey.currentState!.pushAndRemoveUntil(CupertinoPageRoute(builder: (context) => const LoginScreen()), (route) => false);
   }

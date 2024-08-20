@@ -17,13 +17,13 @@ class FeedScreen extends ConsumerStatefulWidget {
 
 class _FeedScreenState extends ConsumerState<FeedScreen> {
 
-  @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp){
-      ref.read(authControllerProvider.notifier).getUserData();
-    });
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp){
+  //     ref.read(authControllerProvider.notifier).getUserData();
+  //   });
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {

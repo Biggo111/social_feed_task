@@ -54,6 +54,7 @@ class _StartupScreenState extends ConsumerState<StartupScreen> {
       ref.read(kBottomNavigationBarControllerProvider.notifier).setIndex(0);
       ref.read(feedControllerProvider.notifier).fetchPosts();
       ref.read(authControllerProvider.notifier).fetchAllUser();
+      ref.read(authControllerProvider.notifier).getUserData();
     });
     super.initState();
   }

@@ -35,6 +35,60 @@
       "dateOfBirth": "1995-07-22",
       "gender": "male",
       "profilePicture": "assets/images/logos/meetmax_logo.png"
+    },
+    {
+      "id": 5,
+      "name": "Charlie Green",
+      "email": "charliegreen@example.com",
+      "password": "7b8b965ad4bca0e41ab51de7b31363a1",
+      "dateOfBirth": "1991-11-11",
+      "gender": "male",
+      "profilePicture": "assets/images/logos/demo_image.png"
+    },
+    {
+      "id": 6,
+      "name": "Diana Prince",
+      "email": "dianaprince@example.com",
+      "password": "4b43b0aee35624cd95b910189b3dc231",
+      "dateOfBirth": "1993-02-27",
+      "gender": "female",
+      "profilePicture": "assets/images/logos/demo_image_3.png"
+    },
+    {
+      "id": 7,
+      "name": "Evan Parker",
+      "email": "evanparker@example.com",
+      "password": "45c48cce2e2d7fbdea1afc51c7c6ad26",
+      "dateOfBirth": "1996-09-30",
+      "gender": "male",
+      "profilePicture": "assets/images/logos/profile_pic_demo_1.png"
+    },
+    {
+      "id": 8,
+      "name": "Fiona Apple",
+      "email": "fionaapple@example.com",
+      "password": "d41d8cd98f00b204e9800998ecf8427e",
+      "dateOfBirth": "1994-12-18",
+      "gender": "female",
+      "profilePicture": "assets/images/logos/profile_pic_demo_2.png"
+    },
+    {
+      "id": 9,
+      "name": "George Miller",
+      "email": "georgemiller@example.com",
+      "password": "827ccb0eea8a706c4c34a16891f84e7b",
+      "dateOfBirth": "1987-01-14",
+      "gender": "male",
+      "profilePicture": "assets/images/logos/demo_image_4.png"
+    },
+    {
+      "id": 10,
+      "name": "Helen Hunt",
+      "email": "helenhunt@example.com",
+      "password": "e99a18c428cb38d5f260853678922e03",
+      "dateOfBirth": "1989-06-05",
+      "gender": "female",
+      "profilePicture": "assets/images/logos/demo_image_2.png"
     }
   ]
 }

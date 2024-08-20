@@ -36,21 +36,16 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 5),
                     height: 120,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: userState.users.length,
-                          itemBuilder: (context, index) {
-                            return StorySectionWidget(
-                              profilePicture: userState.users[index].profilePicture,
-                              name: userState.users[index].name,
-                            );
-                          }
-                        ),
-                      ],
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: userState.users.length,
+                      itemBuilder: (context, index) {
+                        return StorySectionWidget(
+                          profilePicture: userState.users[index].profilePicture,
+                          name: userState.users[index].name,
+                        );
+                      }
                     ),
                   ),
                   const SizedBox(height: 5),

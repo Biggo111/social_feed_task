@@ -38,6 +38,7 @@ class StorySectionWidget extends StatelessWidget {
                 const SizedBox(height: 10),
                 Text(name,
                     overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
                     maxLines: 2,
                     style: AppFonts.bodyMedium.copyWith(
                         color: AppColors.black87,

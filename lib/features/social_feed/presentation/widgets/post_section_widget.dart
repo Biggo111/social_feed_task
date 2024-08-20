@@ -8,8 +8,10 @@ import 'package:social_feed_task/features/social_feed/presentation/screens/creat
 import 'package:social_feed_task/services/navigation_service/navigator.dart';
 
 class PostSectionWidget extends StatelessWidget {
+  final void Function()? onPressed;
   const PostSectionWidget({
     super.key,
+    this.onPressed,
   });
 
   @override
@@ -26,18 +28,31 @@ class PostSectionWidget extends StatelessWidget {
                 child: Image.asset(AssetPath.nameIcon),
               ),
               const SizedBox(width: 10),
-              Expanded(
-                child: InkWell(
-                  onTap: (){
-                    NavigationService.navigatorKey.currentState!.push(CupertinoPageRoute(builder: (_)=>const CreatePostScreen()));
-                    // Navigator.push(context, CupertinoPageRoute(builder: (_)=> const CreatePostScreen()));
-                  },
-                  child: const KTextField(
-                    textEditingEnabled: true,
-                    hintText: 'What\'s happening?',
-                    height: 40,
-                    backgroundColor: AppColors.white54,
-                    borderColor: AppColors.white,
+              // const Expanded(
+              //   child: KTextField(
+              //     textEditingEnabled: true,
+              //     hintText: 'What\'s happening?',
+              //     height: 40,
+              //     backgroundColor: AppColors.white54,
+              //     borderColor: AppColors.white,
+              //   ),
+              // ),
+              InkWell(
+                onTap: onPressed,
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: AppColors.white54,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10, top: 10),
+                    child: Text('What\'s happening?',
+                        style: AppFonts.bodyMedium.copyWith(
+                            color: AppColors.black54,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700)),
                   ),
                 ),
               ),

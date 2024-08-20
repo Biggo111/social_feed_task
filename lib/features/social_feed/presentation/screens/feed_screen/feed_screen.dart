@@ -1,11 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:social_feed_task/features/authentication/presentation/viewmodels/auth_viewmodel.dart';
 import 'package:social_feed_task/features/social_feed/presentation/components/post_card.dart';
+import 'package:social_feed_task/features/social_feed/presentation/screens/create_post/create_post_screen.dart';
 import 'package:social_feed_task/features/social_feed/presentation/viewmodels/feed_viewmodel.dart';
 import 'package:social_feed_task/features/social_feed/presentation/widgets/post_section_widget.dart';
 import 'package:social_feed_task/features/social_feed/presentation/widgets/story_section_widget.dart';
 import 'package:social_feed_task/features/social_feed/presentation/widgets/profile_search_message_widget.dart';
+import 'package:social_feed_task/services/navigation_service/navigator.dart';
 
 class FeedScreen extends ConsumerStatefulWidget {
   const FeedScreen({super.key});
@@ -49,7 +52,15 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                     ),
                   ),
                   const SizedBox(height: 5),
-                  const PostSectionWidget(),
+                  PostSectionWidget(
+                    onPressed: () {
+                      NavigationService.navigatorKey.currentState!.push(
+                        CupertinoPageRoute(
+                          builder: (context) => const CreatePostScreen(),
+                        ),
+                      );
+                    },
+                  ),
                   const SizedBox(height: 20),
                 ],
               ),

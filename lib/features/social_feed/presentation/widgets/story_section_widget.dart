@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:social_feed_task/core/constants/colors_palette.dart';
 import 'package:social_feed_task/core/global_components/text_styles/app_fons.dart';
 import 'package:social_feed_task/features/authentication/presentation/viewmodels/auth_viewmodel.dart';
+import 'package:social_feed_task/services/debugger/debugger.dart';
 
 class StorySectionWidget extends ConsumerWidget {
   const StorySectionWidget({
@@ -12,6 +13,9 @@ class StorySectionWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final usersState = ref.read(authControllerProvider);
+
+    debug(data: "StorySectionWidget: ${usersState.users.length}");
+    
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 5),
       height: 120,

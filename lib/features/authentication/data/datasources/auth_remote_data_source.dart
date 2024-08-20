@@ -73,14 +73,12 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     final data = json.decode(response);
 
     final users = UsersModel.fromJson(data).users;
-
+    
     return users;
   }
 
   @override
   Future<User> fetchMyData(String userId) async {
-    // final prefs = await SharedPreferences.getInstance();
-    // final userId = prefs.getString('user_id');
 
     final String response = await rootBundle.loadString('assets/json/user/users.json');
     final data = json.decode(response);

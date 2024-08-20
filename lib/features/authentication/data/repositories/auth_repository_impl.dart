@@ -30,7 +30,6 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Object> fetchAllUser() async {
     final users = await remoteDataSource.fetchAllUser();
-
     return users;
   }
 

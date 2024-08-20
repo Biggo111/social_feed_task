@@ -40,6 +40,15 @@ class AuthController extends StateNotifier<AuthGeneric> with ProcessAuthMixin{
   }
 
 
+  Future<void> getUserData()async{
+    final pref = sl<SharedPreferences>();
+    final savedToken = pref.get('auth_token');
+    if(savedToken != null){
+      
+    }
+  }
+
+
   Future<void> fetchAllUser() async {
     state = state.update(isLoading: true);
     try {

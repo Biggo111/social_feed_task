@@ -14,4 +14,8 @@ class LoginUseCase {
   Future<Object> fetchAllUser()async{
     return await repository.fetchAllUser();
   }
+
+  Future<Object> getUserData(String email)async{
+    return await repository.getUserData(email);
+  }
 }

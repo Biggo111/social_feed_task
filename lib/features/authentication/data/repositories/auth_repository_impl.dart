@@ -33,4 +33,11 @@ class AuthRepositoryImpl implements AuthRepository {
 
     return users;
   }
+
+  @override
+  Future<Object> getUserData(String email)async{
+    final userData = await remoteDataSource.getUserData(email);
+
+    return User.fromJson(userData!);
+  }
 }

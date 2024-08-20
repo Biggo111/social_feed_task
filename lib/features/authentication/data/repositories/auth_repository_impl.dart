@@ -26,4 +26,11 @@ class AuthRepositoryImpl implements AuthRepository {
       return Exception();
     }
   }
+
+  @override
+  Future<Object> fetchAllUser() async {
+    final users = await remoteDataSource.fetchAllUser();
+
+    return users;
+  }
 }

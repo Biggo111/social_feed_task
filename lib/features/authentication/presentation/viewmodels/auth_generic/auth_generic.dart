@@ -6,6 +6,7 @@ class AuthGeneric{
   final bool error;
   final bool passwordVisible;
   final bool toggleRememberMe;
+  final List<User> users;
 
   AuthGeneric({
     this.user,
@@ -13,15 +14,17 @@ class AuthGeneric{
     this.error = false,
     this.passwordVisible = false,
     this.toggleRememberMe = false,
+    this.users = const []
   });
 
-  AuthGeneric update({User? user, bool? error, bool? isLoading, bool? passwordVisible, bool? toggleRememberMe}){
+  AuthGeneric update({User? user, bool? error, bool? isLoading, bool? passwordVisible, bool? toggleRememberMe, List<User>? users}){
     return AuthGeneric(
       user: user ?? this.user,
       error: error ?? this.error,
       isLoading: isLoading ?? this.isLoading,
       passwordVisible: passwordVisible ?? this.passwordVisible,
       toggleRememberMe: toggleRememberMe ?? this.toggleRememberMe,
+      users: users ?? this.users
     );
 
   }

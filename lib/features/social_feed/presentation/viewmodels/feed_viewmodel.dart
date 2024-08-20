@@ -28,7 +28,7 @@ class FeedController extends StateNotifier<FeedGeneric> {
       }
       final posts = await _feedUseCase.getFeed(token);
       debug(data: "Posts: $posts");
-      if(posts is PostsModel){
+      if(posts is List<Post>){
         state = state.update(postsModel: posts, error: false);
       } else{
         state = state.update(isLoading: true, error: true);

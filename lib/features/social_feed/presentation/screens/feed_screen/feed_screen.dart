@@ -45,10 +45,10 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
               const SizedBox(height: 20),
               ListView.builder(
                 shrinkWrap: true,
-                itemCount: feedState.postsModel!.posts.length,
+                itemCount: feedState.postsModel.length,
                 itemBuilder: (context, index) {
                   return PostCard(
-                    postDetails: feedState.postsModel!.posts[index],
+                    postDetails: feedState.postsModel[index],
                   );
                 }
               )

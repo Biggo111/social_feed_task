@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:social_feed_task/core/global_components/bottom_navigation_bar/k_bottom_navigation_bar.dart';
 import 'package:social_feed_task/core/global_components/bottom_navigation_bar/k_bottom_navigation_bar_controller.dart';
+import 'package:social_feed_task/features/authentication/presentation/viewmodels/auth_viewmodel.dart';
 import 'package:social_feed_task/features/community/presentation/screens/my_community_screen.dart';
 import 'package:social_feed_task/features/explore/presentation/screens/explore_screen.dart';
 import 'package:social_feed_task/features/notification/presentation/screens/notification_screen.dart';
@@ -50,7 +51,9 @@ class _StartupScreenState extends ConsumerState<StartupScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp){
+      ref.read(kBottomNavigationBarControllerProvider.notifier).setIndex(0);
       ref.read(feedControllerProvider.notifier).fetchPosts();
+      ref.read(authControllerProvider.notifier).fetchAllUser();
     });
     super.initState();
   }

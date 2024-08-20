@@ -39,6 +39,22 @@ class AuthController extends StateNotifier<AuthGeneric> with ProcessAuthMixin{
     }
   }
 
+
+  Future<void> fetchAllUser() async {
+    state = state.update(isLoading: true);
+    try {
+      final users = await _loginUseCase.fetchAllUser();
+      if(users is List<User>){
+        state = state.update(isLoading: false, users: users);
+      } else{
+        state = state.update(isLoading: false, error: true);
+      }
+    } catch (e) {
+      state = state.update(isLoading: false, error: true);
+    }
+  }
+
+
   void handleAfterLoginNavigation(){
     if(!state.error){
       debug(data: "User Logged In: ${state.user!.email}");

@@ -1,5 +1,6 @@
 abstract class AuthRepository {
   Future<Object> login({String email, String password});
+  Future<Object> fetchAllUser();
 }
 
 // abstract class AuthRepository {

@@ -10,4 +10,8 @@ class LoginUseCase {
   Future<Object> loginUser(String email, String password) async {
     return await repository.login(email: email, password: password);
   }
+
+  Future<Object> fetchAllUser()async{
+    return await repository.fetchAllUser();
+  }
 }

@@ -6,7 +6,7 @@ import 'package:social_feed_task/features/social_feed/domain/entities/posts_mode
 import 'package:social_feed_task/services/debugger/debugger.dart';
 
 abstract class FeedDataSource {
-  Future<PostsModel> fetchFeed(String authToken);
+  Future<List<Post>> fetchFeed(String authToken);
 }
 
 
@@ -16,14 +16,15 @@ class FeedDataSourceImpl implements FeedDataSource {
   FeedDataSourceImpl(this.dio);
 
   @override
-  Future<PostsModel> fetchFeed(String authToken) async {
+  Future<List<Post>> fetchFeed(String authToken) async {
     try {
       final String response = await rootBundle.loadString('assets/json/feed/posts.json');
       debug(data: "Response: $response");
       final data = json.decode(response);
 
       if (authToken.isNotEmpty) {
-        return PostsModel.fromJson(data);
+        final List<Post> posts = (data['posts'] as List).map((post) => Post.fromJson(post)).toList();
+        return posts;
       } else {
         throw Exception('Unauthorized');
       }
